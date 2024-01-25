@@ -5,22 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ブロック崩し</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        canvas {
-            background: #eee;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <canvas id="canvas" width="480" height="320"></canvas>
+    <div id="title-screen">
+        <h1>ブロック崩し</h1>
+        <h2></h2>
+        <button class="btn btn-border" onclick="startGame()"><span>始める</span></button>
+    </div>
+    <div id="score"></div>
+    <div id="life"></div>
+    <canvas id="canvas" width="720" height="480"></canvas>
     <script src="./Block.js"></script>
 </body>
 

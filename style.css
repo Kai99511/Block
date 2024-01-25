@@ -1,0 +1,168 @@
+body {
+    overflow: hidden;
+    /* スクロールバーを非表示にする */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#canvas {
+    background: #eeeeee;
+    display: none;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000;
+    /* 枠線が必要な場合に追加 */
+}
+
+/*タイトル画面*/
+#title-screen {
+    text-align: center;
+    /*テキストを中央揃え*/
+    margin-top: 100px;
+    /*上からのマージンを100ピクセル*/
+    font-size: 40px;
+    /*フォントサイズを40ピクセル*/
+    position: relative;
+    /*相対位置指定*/
+    text-align: center;
+    top: 150px;
+    /*上から150ピクセルの位置に移動*/
+}
+
+#score {
+    display: none;
+    font-size: 24px;
+    color: black;
+    position: absolute;
+    top: 180px;
+    left: 480px;
+}
+
+/* ライフのスタイル */
+#life {
+    display: none;
+    font-size: 24px;
+    color: black;
+    position: absolute;
+    top: 180px;
+    right: 480px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+button {
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.btn,
+button.btn {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.5;
+ position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem; 
+}
+
+button.btn-border {
+  margin-bottom: 12px;
+  padding: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 0;
+}
+
+
+button.btn-border span {
+  position: relative;
+  display: block;
+  padding: 1.25rem 3rem;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+/* ボーダー線 */
+button.btn-border:before {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 14px;
+  content: "";
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 2px solid #000;
+  border-top: 1px solid #000;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-image: -webkit-repeating-linear-gradient(
+    135deg,
+    #000,
+    #000 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #000,
+    #000 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  background-size: 7px 7px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* 押し込みアニメーション */
+button.btn-border:hover {
+  -webkit-transform: translate(0, 3px);
+  transform: translate(0, 3px);
+} 
+
+button.btn-border:hover:before {
+  bottom: -5px;
+}
+
+button.btn-border:active {
+  -webkit-transform: translate(0, 7px);
+  transform: translate(0, 7px);
+}
+
+button.btn-border:active:before {
+  bottom: -1px;
+} 
