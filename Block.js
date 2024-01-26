@@ -106,17 +106,16 @@ function startGame() {
             for (let r = 0; r < blockRecCount; r++) {
                 const b = block[c][r];
                 if (b.status === 1) {
-                    const centerX = x;
-                    const centerY = y;
-                    const radius = ballRadious;
-                    const rectX = b.x + blockWidth / 2;
-                    const rectY = b.y + blockHeight / 2;
+                    //ボールの位置によってブロックの判定の優先順位をきめる
+                    const closestX = Math.max(b.x, Math.min(x, b.x + blockWidth));
+                    const closestY = Math.max(b.y, Math.min(y, b.y + blockHeight));
 
+                    // ボールが最も近い点内にあるかどうかをチェック
+                    const distanceX = x - closestX;
+                    const distanceY = y - closestY;
+                    const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
                     // 円と矩形の当たり判定
-                    if (
-                        Math.abs(centerX - rectX) < (blockWidth / 2 + radius) &&
-                        Math.abs(centerY - rectY) < (blockHeight / 2 + radius)
-                    ) {
+                    if (distance < ballRadious) {
                         dy = -dy;
                         b.status = 0;
                         score++;
@@ -125,14 +124,18 @@ function startGame() {
                             document.location.reload();
                             clearInterval(interval);
                         }
-                    } 
-                    const paddleCenterX = paddleX + paddleWidth / 2;
-                    const paddleCenterY = canvas.height - paddleHeight / 2;
+                    }
+                    // const paddleCenterX = paddleX + paddleWidth / 2;
+                    // const paddleCenterY = canvas.height - paddleHeight / 2;
 
-                    if (
-                        Math.abs(x - paddleCenterX) < (paddleWidth / 2 + ballRadious) &&
-                        Math.abs(y - paddleCenterY) < (paddleHeight / 2 + ballRadious)
-                    ) {
+                    const hitPaddle = (
+                        x + ballRadious >= paddleX &&
+                        x - ballRadious <= paddleX + paddleWidth &&
+                        y + ballRadious >= canvas.height - paddleHeight &&
+                        y - ballRadious <= canvas.height
+                    );
+
+                    if (hitPaddle) {
                         dy = -dy;
                     }
                 }
@@ -236,7 +239,7 @@ function startGame() {
     }
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
-    document.addEventListener("mousemove", mouseMoveHandler, false);
+    // document.addEventListener("mousemove", mouseMoveHandler, false);
 
     draw();
 }
