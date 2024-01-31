@@ -33,7 +33,7 @@ const blockOffsetLeft = 25;//左幅
 let score = 0;
 
 //ライフ
-let life = 500;
+let life = 3;
 
 function startGame() {
     // タイトル画面を非表示にし、ゲーム画面を表示

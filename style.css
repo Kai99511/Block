@@ -96,6 +96,7 @@ button.btn {
   letter-spacing: 0.1em;
   color: #212529;
   border-radius: 0.5rem; 
+  top: 75px;
 }
 
 button.btn-border {
